@@ -9,17 +9,21 @@
     <link rel="stylesheet" href="{% static 'leads/style.css' %}">
 </head>
 <body>
+    <a href="/leads"> gog back</a>
+    <hr>
     <h1>
-        This is our Leads
+        Create New Lead
     </h1>
-        {% for lead in leads %}
-          
-            <div class="lead">
-                <a href="/leads/{{lead.pk}}">{{lead.first_name}}</a>
-            </div>
-          
-        {% endfor %}
+        
+    <div>
+        <form action="" method="post">  
+            {% csrf_token %}
+            {{form.as_p}}
 
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>
     
 </body>
 </html>
