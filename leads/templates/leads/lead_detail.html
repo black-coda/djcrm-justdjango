@@ -7,8 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/leads"> gog back</a>
+    <a href="{% url 'home' %}">Back to list of leads</a>
 
-    this is the details of {{lead.first_name}}
+
+    <div>
+        <p>
+            Name : {{lead.name}}
+        </p>
+        <p>
+            Age: {{lead.age}}
+        </p>
+        <p>
+            Agent: {{lead.agent}}
+        </p>
+    </div>
 </body>
 </html>

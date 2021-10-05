@@ -22,25 +22,13 @@ def lead_create(request):
     form = forms.LeadModelForm()
     if request.method == "POST":
         form = forms.LeadModelForm(request.POST)
-        print('YOu have a post method')
 
         if form.is_valid():
-            print('form is valid')
-            print(form.cleaned_data)
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['first_name']
-            age = form.cleaned_data['age']
-            agent = Agent.objects.first()
-            Lead.objects.create(
-               first_name = first_name,
-               last_name =  last_name,
-               age = age,
-               agent = agent
-            )
-            print('leads created')
+            form.save()
             return redirect('home')
     context = {
-        'form':forms.LeadForm()
-    
+        'form':form    
     }
     return render(request, 'leads/lead_create.html', context)
+
+#since modeform is used, form.save() will do the work of line 30 downwards
