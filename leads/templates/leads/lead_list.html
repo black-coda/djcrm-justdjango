@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="{% static 'leads/style.css' %}">
 </head>
 <body>
+    <div>
+        <a href="{% url 'lead_create' %}">Create new leads</a>
+    </div>
+    <hr>
     <h1>
         This is our Leads
     </h1>
@@ -19,7 +23,8 @@
             </div>
           
         {% endfor %}
-
+    
+    
     
 </body>
 </html>

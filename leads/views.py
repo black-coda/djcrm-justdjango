@@ -19,9 +19,9 @@ def lead_details(request,pk):
     return render(request, 'leads/lead_detail.html', context)
 
 def lead_create(request):
-    form = forms.LeadForm()
+    form = forms.LeadModelForm()
     if request.method == "POST":
-        form = forms.LeadForm(request.POST)
+        form = forms.LeadModelForm(request.POST)
         print('YOu have a post method')
 
         if form.is_valid():
@@ -30,7 +30,7 @@ def lead_create(request):
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['first_name']
             age = form.cleaned_data['age']
-            agent = Agent.objects.order_by('?')[0]
+            agent = Agent.objects.first()
             Lead.objects.create(
                first_name = first_name,
                last_name =  last_name,
