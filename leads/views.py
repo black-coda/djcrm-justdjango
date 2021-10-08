@@ -25,10 +25,32 @@ def lead_create(request):
 
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('leads:home')
     context = {
         'form':form    
     }
     return render(request, 'leads/lead_create.html', context)
 
 #since modeform is used, form.save() will do the work of line 30 downwards
+
+def lead_update(request,pk):
+    lead_detail = Lead.objects.get(id = pk)
+    form = forms.LeadModelForm(instance=lead_detail)
+    if request.method == "POST":
+        form = forms.LeadModelForm(request.POST, instance=lead_detail)
+
+        if form.is_valid():
+            form.save()
+            return redirect('leads:home')
+
+    context ={
+        'lead':lead_detail,
+        'form': form,
+    }
+    print(lead_detail)
+    return render(request, 'leads/lead_create.html', context)
+
+def lead_delete(request, pk):
+    lead = Lead.objects.get(id = pk)
+    lead.delete()
+    return redirect('/leads')

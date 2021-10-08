@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'leads/style.css' %}">
 </head>
 <body>
-    <a href="{% url 'leads:home' %}">Back to list of leads</a>
+    <a href="{% url 'home' %}">Back to list of leads</a>
     <hr>
     <h1>
-        Create New Lead
+       Update Lead
     </h1>
         
     <div>

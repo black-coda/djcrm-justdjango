@@ -10,7 +10,7 @@
 </head>
 <body>
     <div>
-        <a href="{% url 'lead_create' %}">Create new leads</a>
+        <a href="{% url 'leads:lead_create' %}">Create new leads</a>
     </div>
     <hr>
     <h1>
@@ -19,7 +19,7 @@
         {% for lead in leads %}
           
             <div class="lead">
-                <a href="/leads/{{lead.pk}}">{{lead.first_name}}</a>
+                <a href="{% url 'leads:lead_details' lead.pk %}">{{lead.first_name}}</a>
             </div>
           
         {% endfor %}

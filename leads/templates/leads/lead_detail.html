@@ -7,12 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{% url 'home' %}">Back to list of leads</a>
+    <a href="{% url 'leads:home' %}">Back to list of leads</a>
 
 
     <div>
         <p>
-            Name : {{lead.name}}
+            Name : {{lead.first_name}} {{lead.last_name}}
         </p>
         <p>
             Age: {{lead.age}}
@@ -21,5 +21,13 @@
             Agent: {{lead.agent}}
         </p>
     </div>
+
+
+    <footer>
+        <div>
+            <a href="{% url 'leads:lead_update' lead.pk  %}">Update leads</a> <br>
+            <a href="{% url 'leads:lead_delete' lead.pk  %}">delete  leads</a>
+        </div>
+    </footer>
 </body>
 </html>
