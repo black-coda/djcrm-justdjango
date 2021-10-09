@@ -1,15 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'leads/style.css' %}">
-</head>
-<body>
-    <a href="{% url 'leads:home' %}">Back to list of leads</a>
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <a href="{% url 'leads:lead_list' %}">Back to list of leads</a>
     <hr>
     <h1>
         Create New Lead
@@ -24,6 +17,5 @@
 
         </form>
     </div>
-    
-</body>
-</html>
+
+{% endblock content %}

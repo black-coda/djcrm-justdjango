@@ -3,6 +3,9 @@ from . models import Agent, Lead
 from . import forms
 
 # Create your views here.
+def landing_page_view( request,*args, **kwargs):
+    return render(request,'landing.html' ,*args, **kwargs,)
+
 def lead_list(request):
     leads = Lead.objects.all()
     context = {
@@ -25,7 +28,7 @@ def lead_create(request):
 
         if form.is_valid():
             form.save()
-            return redirect('leads:home')
+            return redirect('leads:lead_list')
     context = {
         'form':form    
     }
@@ -41,7 +44,7 @@ def lead_update(request,pk):
 
         if form.is_valid():
             form.save()
-            return redirect('leads:home')
+            return redirect('leads:lead_list')
 
     context ={
         'lead':lead_detail,

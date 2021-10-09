@@ -16,6 +16,8 @@ class Lead(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     age = models.IntegerField(default=0)
+    location = models.CharField(max_length=800, blank=True)
+    phone_number = models.IntegerField( default='+234')
     agent = models.ForeignKey(Agent, on_delete=models.CASCADE)
 
     def __str__(self):
