@@ -5,5 +5,5 @@ from leads.views import landing_page_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', landing_page_view, name='landing_page'),
-    path('leads/', include('leads.urls', namespace='leads',)),
+    path('leads/', include('leads.urls', namespace='lead',)),
 ]

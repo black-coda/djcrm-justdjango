@@ -51,7 +51,7 @@ def lead_update(request,pk):
         'form': form,
     }
     print(lead_detail)
-    return render(request, 'leads/lead_create.html', context)
+    return render(request, 'leads/lead_update.html', context)
 
 def lead_delete(request, pk):
     lead = Lead.objects.get(id = pk)
