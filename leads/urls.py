@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'leads'
 
@@ -10,4 +12,4 @@ urlpatterns = [
     path('<int:pk>/update/', views.LeadUpdateView.as_view(), name='lead_update'),
     path('<int:pk>/delete/', views.lead_delete, name='lead_delete',),
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

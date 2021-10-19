@@ -1,10 +1,20 @@
+from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from . models import Agent, Lead
 from . import forms
 from django.views import generic
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
+class SignUpView(generic.CreateView):
+    template_name = 'registration/signup.html'
+    form_class = forms.SignUpForm
+    
+    def get_success_url(self):
+        return reverse('login')
+
+
 class LandingView(generic.TemplateView):
     template_name = "landing.html"
 
@@ -49,6 +59,15 @@ class LeadCreateView(generic.CreateView):
     
     def get_success_url(self): #if form is save
         return reverse("leads:lead_list")
+
+    def form_valid(self, form):
+        send_mail(
+            subject='A leed has been created',
+            message='Go to the side to see your lead',
+            from_email='mondaysolomon01@gmail.com',
+            recipient_list=['mondaysolomon02@gmail.com','monday_solomon@yahoo.com']
+        )
+        return super(LeadCreateView, self).form_valid(form)
 
 
 def lead_create(request):

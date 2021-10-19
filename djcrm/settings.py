@@ -133,3 +133,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #informing django of the custom user
 AUTH_USER_MODEL = 'leads.User'
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = 'mondaysolomon01@gmail.com'
+    EMAIL_HOST_PASSWORD = 'OKWHAsolo01@'
+    EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL = 'landing_page'
