@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'leads',
+    'agents',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,4 @@ if DEBUG:
     EMAIL_USE_TLS = True
 
 LOGIN_REDIRECT_URL = 'landing_page'
+LOGIN_URL = 'login'

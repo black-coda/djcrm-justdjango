@@ -5,6 +5,7 @@ from . models import Agent, Lead
 from . import forms
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 class SignUpView(generic.CreateView):
@@ -22,7 +23,7 @@ def landing_page_view( request,*args, **kwargs):
     return render(request,'landing.html' ,*args, **kwargs,)
 ########################################
 
-class LeadListView(generic.ListView):
+class LeadListView(LoginRequiredMixin,generic.ListView):
     template_name       = 'leads/lead_list.html'
     context_object_name = 'leads'
     queryset            = Lead.objects.all()
@@ -37,7 +38,7 @@ def lead_list(request):
 
 #######################################
 
-class LeadDetailView(generic.DetailView):
+class LeadDetailView(LoginRequiredMixin,generic.DetailView):
     template_name       = 'leads/lead_detail.html'
     context_object_name = 'lead'
     queryset            = Lead.objects.all()
@@ -53,7 +54,7 @@ def lead_details(request,pk):
 
 ###########################################
 
-class LeadCreateView(generic.CreateView):
+class LeadCreateView(LoginRequiredMixin,generic.CreateView):
     template_name   = 'leads/lead_create.html'
     form_class      = forms.LeadModelForm
     
@@ -85,7 +86,7 @@ def lead_create(request):
 
 #since modeform is used, form.save() will do the work of line 30 downwards
 ##############################################
-class LeadUpdateView(generic.UpdateView):
+class LeadUpdateView(LoginRequiredMixin,generic.UpdateView):
     template_name   = 'leads/lead_update.html'
     form_class      = forms.LeadModelForm
     queryset        = Lead.objects.all()
@@ -113,7 +114,7 @@ def lead_update(request,pk):
 
 ################################################
 
-class LeadDeleteView(generic.DeleteView):
+class LeadDeleteView(LoginRequiredMixin,generic.DeleteView):
     template_name   =     'leads/lead_delete.html' #requires me creating a template, but i will stick with FBV
     form_class      =      forms.LeadModelForm
     queryset        =      Lead.objects.all()
