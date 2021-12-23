@@ -141,7 +141,7 @@ if DEBUG:
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST_USER = 'mondaysolomon01@gmail.com'
-    EMAIL_HOST_PASSWORD = 'OKWHAsolo01@'
+    EMAIL_HOST_PASSWORD = 'okwhaSOLO01@'
     EMAIL_USE_TLS = True
 
 LOGIN_REDIRECT_URL = 'landing_page'

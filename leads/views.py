@@ -62,12 +62,14 @@ class LeadCreateView(LoginRequiredMixin,generic.CreateView):
         return reverse("leads:lead_list")
 
     def form_valid(self, form):
+        """
         send_mail(
             subject='A leed has been created',
             message='Go to the side to see your lead',
             from_email='mondaysolomon01@gmail.com',
-            recipient_list=['mondaysolomon02@gmail.com','monday_solomon@yahoo.com']
+            recipient_list=['','mondaysolomon02@gmail.com','monday_solomon@yahoo.com']
         )
+        """
         return super(LeadCreateView, self).form_valid(form)
 
 
